@@ -2,17 +2,18 @@ import { useState } from 'react';
 
 const Counter = () => {
   const [count, setCount] = useState(0);
-  const increment = () => {
-    setCount(count + 1);
+  const [isAdd, setIsAdd] = useState(true);
+  const handleMode = () => {
+    setIsAdd(!isAdd);
   };
-  const decrement = () => {
-    setCount(count - 1);
+  const handleCount = () => {
+    setCount(isAdd ? count + 1 : count - 1);
   };
   return (
     <div>
       <h2>Count: {count}</h2>
-      <button onClick={increment}>add 1</button>
-      <button onClick={decrement}>sub 1</button>
+      <button onClick={handleCount}>{isAdd ? '+1' : '-1'}</button>
+      <button onClick={handleMode}>mode: {isAdd ? 'add' : 'sub'}</button>
     </div>
   );
 };
