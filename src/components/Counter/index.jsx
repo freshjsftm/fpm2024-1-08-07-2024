@@ -7,7 +7,7 @@ const Counter = () => {
     setIsAdd(!isAdd);
   };
   const handleCount = () => {
-    setCount(isAdd ? count + 1 : count - 1);
+    setCount((prevCount) => (isAdd ? prevCount + 1 : prevCount - 1));
   };
   return (
     <div>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const Coords = () => {
-  const [coords, setCoords] = useState({x: 0,y: 0});
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [countClick, setCountClick] = useState(0);
   const handleMouseMove = (event) => {
     setCoords({
@@ -10,7 +10,7 @@ const Coords = () => {
     });
   };
   const handleClick = () => {
-    setCountClick(countClick + 1);
+    setCountClick((countClick) => countClick + 1);
   };
   return (
     <div
