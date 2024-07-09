@@ -1,16 +1,17 @@
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import StopWatch from './components/StopWatch';
+import Coords from './components/Coords';
+import Header from './components/Header';
 
 function App() {
-  const [visible, setVisible] = useState(true);
-  const handleVisible = () => {
-    setVisible(!visible);
-  };
   return (
-    <>
-      <button onClick={handleVisible}>visible {visible ? 'on' : 'off'}</button>
-      {visible && <StopWatch />}
-    </>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<StopWatch />} />
+        <Route path="/coords" element={<Coords />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
