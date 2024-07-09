@@ -5,6 +5,7 @@ const Coords = () => {
   const [countClick, setCountClick] = useState(0);
   const handleMouseMove = (event) => {
     setCoords({
+      ...coords,
       x: event.clientX,
       y: event.clientY,
     });
