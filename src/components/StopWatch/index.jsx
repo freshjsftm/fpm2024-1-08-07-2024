@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { format, addSeconds } from 'date-fns';
+import styles from './StopWatch.module.scss';
 
 const StopWatch = () => {
   const [time, setTime] = useState(new Date(0, 0, 0, 0, 0, 0, 0));
@@ -8,10 +9,10 @@ const StopWatch = () => {
   const handleIsRuning = () => {
     setIsRuning(!isRuning);
   };
-  const handleReset = ()=>{
+  const handleReset = () => {
     setTime(new Date(0, 0, 0, 0, 0, 0, 0));
     setIsRuning(false);
-  }
+  };
 
   useEffect(() => {
     if (isRuning) {
@@ -27,7 +28,7 @@ const StopWatch = () => {
   }, [isRuning, time]);
 
   return (
-    <div>
+    <div className={styles.watch}>
       <h2>{format(time, 'HH : mm : ss')}</h2>
       <button onClick={handleIsRuning}>{isRuning ? 'stop' : 'start'}</button>
       <button onClick={handleReset}>reset</button>
