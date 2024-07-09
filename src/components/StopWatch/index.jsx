@@ -7,8 +7,9 @@ const StopWatch = () => {
   const handleIsRuning = () => {
     setIsRuning(!isRuning);
   };
-  if (isRuning) { //!!! так робити не можна!!!
-    useEffect(() => {
+
+  useEffect(() => {
+    if (isRuning) {
       console.log('add setInterval');
       const idInterval = setInterval(() => {
         setTime((time) => time + 1);
@@ -17,8 +18,8 @@ const StopWatch = () => {
         clearInterval(idInterval);
         console.log('clear Interval');
       };
-    }, []);
-  }
+    }
+  }, [isRuning]);
 
   return (
     <div>
