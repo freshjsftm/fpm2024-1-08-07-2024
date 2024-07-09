@@ -1,24 +1,26 @@
 import { useState, useEffect } from 'react';
 import './Clicker.css';
-
 const Clicker = () => {
   const [clickCount, setClickCount] = useState(0);
-
+  const [step, setStep] = useState(1);
+  const handleStep = ({ target: { value } }) => {
+    setStep(Number(value));
+  };
   useEffect(() => {
     const handleClick = () => {
-      setClickCount((clickCount) => clickCount + 1);
+      setClickCount((clickCount) => clickCount + step);
     };
-    console.log('add effect');
     document.body.addEventListener('click', handleClick);
     return () => {
-      console.log('remove effect');
       document.body.removeEventListener('click', handleClick);
     };
-  }, []);
-
-  console.log('render');
-  return <h2>Clicker: {clickCount}</h2>;
+  }, [step]);
+  return (
+    <h2>
+      Clicker: {clickCount}
+      <input type="text" value={step} onChange={handleStep} />
+    </h2>
+  );
 };
 
 export default Clicker;
-//  onClick={handleClick}
