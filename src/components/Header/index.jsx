@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect, useCallback, useMemo } from 'react';
+import { useContext, useState, useCallback, useMemo } from 'react';
 import cx from 'classnames';
 import { LightMode, DarkMode } from '@mui/icons-material';
 import styles from './Header.module.scss';
@@ -9,7 +9,7 @@ const { THEME } = CONSTANTS;
 
 function calcPower(n) {
   let sum = 0;
-  for (let i = 0; i < 1000000000; i++) {
+  for (let i = 0; i < 100000000; i++) {
     sum += i;
   }
   return sum ** n;
@@ -32,9 +32,6 @@ const Header = () => {
   const handleLogValue = useCallback(() => {
     console.log(text);
   }, [text]);
-  useEffect(() => {
-    console.log('create function handleInput');
-  }, [handleInput]);
 
   const classNames = cx(styles.header, {
     [styles.light]: isLightTheme,
