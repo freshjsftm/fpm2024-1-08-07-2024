@@ -4,6 +4,8 @@ import { UserContext, ThemeContext } from './contexts';
 import HomePage from './pages/HomePage';
 import Coords from './components/Coords';
 import Header from './components/Header';
+import CONSTANTS from './constants';
+const {THEME} = CONSTANTS;
 
 function App() {
   const [user] = useState({
@@ -11,7 +13,7 @@ function App() {
     login: 'max',
     avatar: '/images/defava.png',
   });
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(THEME.LIGHT);
   return (
     <ThemeContext.Provider value={[theme, setTheme]}>
       <UserContext.Provider value={user}>

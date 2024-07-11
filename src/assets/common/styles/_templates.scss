@@ -1,0 +1,11 @@
+@use './colors' as *;
+
+%light {
+  color: $colorDark;
+  background-color: $colorLight;
+}
+
+%dark {
+  color: $colorLight;
+  background-color: $colorDark;
+}
