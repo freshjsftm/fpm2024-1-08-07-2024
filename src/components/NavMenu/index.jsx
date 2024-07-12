@@ -5,6 +5,8 @@ const NavMenu = () => {
     <ul>
       <li><NavLink to='/'>home</NavLink></li>
       <li><NavLink to='/coords'>coords</NavLink></li>
+      <li><NavLink to='/books'>books</NavLink></li>
+      <li><NavLink to='/events'>events</NavLink></li>
     </ul>
   </nav>;
 };
