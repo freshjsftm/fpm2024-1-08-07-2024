@@ -1,6 +1,7 @@
 import EventReal from './EventReal';
 import { getEvents } from '../../api';
 import useDataLoad from '../../hooks/useDataLoad';
+import Error from '../Error';
 
 const EventsReal = () => {
   const { data: events, isPending, error } = useDataLoad(getEvents);
@@ -9,7 +10,7 @@ const EventsReal = () => {
     return <h3>Loading...</h3>;
   }
   if (error) {
-    return <h3>{error.toString()}</h3>;
+    return <Error />;
   }
   if (events.length === 0) {
     return <h3>events not found</h3>;
