@@ -1,18 +1,9 @@
-import { useEffect, useState } from 'react';
 import EventReal from './EventReal';
+import { getEvents } from '../../api';
+import useDataLoad from '../../hooks/useDataLoad';
 
 const EventsReal = () => {
-  const [events, setEvents] = useState([]);
-  const [isPending, setIsPending] = useState(false);
-  const [error, setError] = useState(null);
-  useEffect(() => {
-    setIsPending(true);
-    fetch('/data/events.json')
-      .then((response) => response.json())
-      .then((data) => setEvents(data))
-      .catch((error) => setError(error))
-      .finally(() => setIsPending(false));
-  }, []);
+  const { data: events, isPending, error } = useDataLoad(getEvents);
   const showEvents = (event) => <EventReal key={event.id} eventReal={event} />;
   if (isPending) {
     return <h3>Loading...</h3>;
@@ -27,4 +18,3 @@ const EventsReal = () => {
 };
 
 export default EventsReal;
-

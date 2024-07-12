@@ -1,18 +1,9 @@
-import { useEffect, useState } from 'react';
 import Book from './Book';
+import { getBooks } from '../../api';
+import useDataLoad from '../../hooks/useDataLoad';
 
 const Books = () => {
-  const [books, setBooks] = useState([]);
-  const [isPending, setIsPending] = useState(false);
-  const [error, setError] = useState(null);
-  useEffect(() => {
-    setIsPending(true);
-    fetch('/data/books.json')
-      .then((response) => response.json())
-      .then((data) => setBooks(data))
-      .catch((error) => setError(error))
-      .finally(() => setIsPending(false));
-  }, []);
+  const { data:books, isPending, error } = useDataLoad(getBooks);
   const showBooks = (book) => <Book key={book.id} book={book} />;
   if (isPending) {
     return <h3>Loading...</h3>;
