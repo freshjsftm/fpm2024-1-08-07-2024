@@ -1,22 +1,12 @@
 import { useReducer } from 'react';
-
-const initialState = {
-  email: '',
-  phone: '',
-  quetion: '',
-};
-
-const reducer = (state, action) => {
-  const { name, value } = action;
-  const newState = { ...state, [name]: value };
-  return newState;
-};
+import reducer from './reducer';
 
 const ContactForm = () => {
-  const [{ email, phone, quetion }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [{ email, phone, quetion }, dispatch] = useReducer(reducer, {
+    email: '',
+    phone: '',
+    quetion: '',
+  });
 
   const handleInput = ({ target: { name, value } }) => {
     const action = { name, value };
