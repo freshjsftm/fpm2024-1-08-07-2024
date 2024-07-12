@@ -6,9 +6,10 @@ import BookPage from './pages/BookPage';
 import EventPage from './pages/EventPage';
 import Coords from './components/Coords';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import CONSTANTS from './constants';
 
-const {THEME} = CONSTANTS;
+const { THEME } = CONSTANTS;
 
 function App() {
   const [user] = useState({
@@ -28,6 +29,7 @@ function App() {
             <Route path="/books" element={<BookPage />} />
             <Route path="/events" element={<EventPage />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </UserContext.Provider>
     </ThemeContext.Provider>
