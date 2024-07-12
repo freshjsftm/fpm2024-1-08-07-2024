@@ -1,4 +1,4 @@
-import { useContext, useState, useCallback, useMemo } from 'react';
+import { useContext, useState, useCallback } from 'react';
 import cx from 'classnames';
 import { LightMode, DarkMode } from '@mui/icons-material';
 import styles from './Header.module.scss';
@@ -6,14 +6,6 @@ import { UserContext, ThemeContext } from '../../contexts';
 import NavMenu from '../NavMenu';
 import CONSTANTS from '../../constants';
 const { THEME } = CONSTANTS;
-
-function calcPower(n) {
-  let sum = 0;
-  for (let i = 0; i < 100000000; i++) {
-    sum += i;
-  }
-  return sum ** n;
-}
 
 const Header = () => {
   const [text, setText] = useState('search');
@@ -38,11 +30,8 @@ const Header = () => {
     [styles.dark]: !isLightTheme,
   });
 
-  const showPower = useMemo(() => calcPower(text.length), [text]);
-
   return (
     <header className={classNames}>
-      <h2>{showPower}</h2>
       <NavMenu />
       <span onClick={handleTheme}>
         {isLightTheme ? <DarkMode /> : <LightMode />}
