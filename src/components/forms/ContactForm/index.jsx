@@ -1,17 +1,28 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
+
+const initialState = {
+  email: '',
+  phone: '',
+  quetion: '',
+};
+
+const reducer = (state, action) => {
+  const { name, value } = action;
+  const newState = { ...state, [name]: value };
+  return newState;
+};
 
 const ContactForm = () => {
-  const [state, setState] = useState({
-    email: '',
-    phone: '',
-    quetion: '',
-  });
+  const [{ email, phone, quetion }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
+
   const handleInput = ({ target: { name, value } }) => {
-    setState({
-      ...state,
-      [name]: value,
-    });
+    const action = { name, value };
+    dispatch(action);
   };
+
   return (
     <div>
       <h3>contact form</h3>
@@ -20,21 +31,21 @@ const ContactForm = () => {
           type="text"
           name="email"
           placeholder="email"
-          value={state.email}
+          value={email}
           onChange={handleInput}
         />
         <input
           type="text"
           name="phone"
           placeholder="phone"
-          value={state.phone}
+          value={phone}
           onChange={handleInput}
         />
         <input
           type="text"
           name="quetion"
           placeholder="quetion"
-          value={state.quetion}
+          value={quetion}
           onChange={handleInput}
         />
         <button type="submit">send</button>
