@@ -15,8 +15,15 @@ const ContactForm = () => {
 
   return (
     <div>
-      <h3>contact form</h3>
-      <form>
+      <h3 style={{ textAlign: 'center' }}>contact form</h3>
+      <form
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '300px',
+          margin: 'auto',
+        }}
+      >
         <input
           type="text"
           name="email"
