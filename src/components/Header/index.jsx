@@ -30,8 +30,14 @@ const Header = () => {
 
   return (
     <header className={classNames}>
-      <Menu className={styles.open} onClick={()=>setIsMenuOpen(true)}/>
-      <NavMenu stateMenu={[isMenuOpen, setIsMenuOpen]}/>
+      <Menu
+        className={styles.open}
+        onClick={(event) => {
+          event.stopPropagation();
+          setIsMenuOpen(true);
+        }}
+      />
+      <NavMenu stateMenu={[isMenuOpen, setIsMenuOpen]} />
       <span onClick={handleTheme}>
         {isLightTheme ? <DarkMode /> : <LightMode />}
       </span>
