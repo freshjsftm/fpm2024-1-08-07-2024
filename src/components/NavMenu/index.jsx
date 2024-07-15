@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useId } from 'react';
 import { NavLink } from 'react-router-dom';
 import cx from 'classnames';
 import CloseIcon from '@mui/icons-material/Close';
@@ -11,10 +11,10 @@ const NavMenu = (props) => {
   const classNames = cx(styles.nav, {
     [styles.openMenu]: isMenuOpen,
   });
-  const refNav = useRef(null);
+  const idNav = useId();
   useEffect(() => {
     const handleClickWindow = ({ target }) => {
-      if (target !== refNav.current) {
+      if (target !== document.getElementById(idNav).current) {
         setIsMenuOpen(false);
       }
       // if(!refNav.current.contains(target)){
@@ -27,7 +27,7 @@ const NavMenu = (props) => {
     };
   }, [isMenuOpen]);
   return (
-    <nav className={classNames} ref={refNav}>
+    <nav className={classNames} id={idNav}>
       <CloseIcon
         className={styles.close}
         onClick={() => setIsMenuOpen(false)}
