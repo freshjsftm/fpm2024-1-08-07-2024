@@ -17,15 +17,12 @@ const NavMenu = (props) => {
       if (target !== document.getElementById(idNav).current) {
         setIsMenuOpen(false);
       }
-      // if(!refNav.current.contains(target)){
-      //   setIsMenuOpen(false)
-      // }
     };
     window.addEventListener('click', handleClickWindow);
     return () => {
       window.removeEventListener('click', handleClickWindow);
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, idNav, setIsMenuOpen]);
   return (
     <nav className={classNames} id={idNav}>
       <CloseIcon
